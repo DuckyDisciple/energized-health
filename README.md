@@ -1,6 +1,4 @@
-# Pure Func
-
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+# Energized Health Tracker
 
 ## Available Scripts
 
