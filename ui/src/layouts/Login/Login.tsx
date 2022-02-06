@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useAuth, Types } from 'global'
+import React, { useState, useEffect, useContext } from 'react'
+import { AuthContext, AuthTypes } from 'context'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Cookies from 'js-cookie'
@@ -12,7 +12,8 @@ const ME = gql`
     me {
       displayName
       username
-      isAdmin
+      role
+      email
     }
   }
 `
@@ -23,7 +24,8 @@ const LOGIN = gql`
       user {
         displayName
         username
-        isAdmin
+        role
+        email
       }
       token
     }
@@ -31,7 +33,7 @@ const LOGIN = gql`
 `
 
 export const Login = () => {
-  const { dispatch: authDispatch } = useAuth()
+  const { dispatch: authDispatch } = useContext(AuthContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isCredsChecked, setIsCredsChecked] = useState(false)
@@ -49,11 +51,12 @@ export const Login = () => {
   useEffect(() => {
     if (!isCredsChecked && credsOnServer && credsOnServer.me && credsOnServer.me.displayName) {
       authDispatch({
-        type: Types.Login,
+        type: AuthTypes.Login,
         payload: {
           displayName: credsOnServer.me.displayName,
           username: credsOnServer.me.username,
-          isAdmin: credsOnServer.me.isAdmin,
+          role: credsOnServer.me.role,
+          email: credsOnServer.me.email,
         },
       })
       setIsCredsChecked(true)
@@ -65,11 +68,12 @@ export const Login = () => {
     if (loginData && loginData.login) {
       Cookies.set('token', loginData.login.token)
       authDispatch({
-        type: Types.Login,
+        type: AuthTypes.Login,
         payload: {
           displayName: loginData.login.user.displayName,
           username: loginData.login.user.username,
-          isAdmin: loginData.login.user.isAdmin,
+          role: loginData.login.user.role,
+          email: loginData.login.user.email,
         },
       })
     }

@@ -1,16 +1,14 @@
 import React from 'react'
-import { SEO } from 'utilities'
-import { Section } from 'components'
+import { PageWrapper } from 'components/PageWrapper'
 
 export default function TermsPage() {
   return (
     <>
-      <SEO title="Terms & Conditions" description="Pure Func terms & conditions" pathname="/terms" />
-      <Section>
+      <PageWrapper>
         <>
           <h1>Terms & Conditions</h1>
         </>
-      </Section>
+      </PageWrapper>
     </>
   )
 }

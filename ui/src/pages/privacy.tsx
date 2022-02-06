@@ -1,16 +1,14 @@
 import React from 'react'
-import { SEO } from 'utilities'
-import { Section } from 'components'
+import { PageWrapper } from 'components/PageWrapper'
 
 export default function PrivacyPage() {
   return (
     <>
-      <SEO title="Privacy Policy" description="Pure Func Privacy Policy" pathname="/privacy" />
-      <Section>
+      <PageWrapper>
         <>
           <h1>Privacy Policy</h1>
         </>
-      </Section>
+      </PageWrapper>
     </>
   )
 }

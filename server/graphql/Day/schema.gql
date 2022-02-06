@@ -1,0 +1,50 @@
+module.exports = `
+  type Day {
+    _id: ID!
+    date: String!
+    userId: ID!
+    prelaunchDay: Int
+    day: Int
+    videoWatched: Boolean!
+    videoNotes: String
+    walkMinutes: Int
+    shuffleMinutes: Int
+    resistanceSets: Int
+    resistanceType: ResistanceType
+    waterGoal: Int
+    notes: String
+  }
+
+  enum ResistanceType {
+    CHEST_BACK
+    BICEP_TRICEP
+  }
+
+  input DayInput {
+    prelaunchDay: Int
+    day: Int
+    videoWatched: Boolean
+    videoNotes: String
+    walkMinutes: Int
+    shuffleMinutes: Int
+    resistanceSets: Int
+    resistanceType: ResistanceType
+    waterGoal: Int
+    notes: String
+  }
+
+  extend type Query {
+    getDay(userId: ID, date: String!): Day
+  }
+
+  extend type Mutation {
+    addDay(
+      date: String!
+      userId: String!
+    ): Day
+    updateDay(
+      _id: ID!
+      input: DayInput!
+    ): Day
+  }
+`

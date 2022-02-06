@@ -1,0 +1,29 @@
+module.exports = `
+  type Supplement {
+    _id: ID!
+    date: String!
+    userId: ID!
+    time: String!
+    name: String!
+    amount: Float
+    unit: String
+  }
+
+  extend type Query {
+    userSupplementsForDay(userId: ID!, date: String!): [Supplement]
+  }
+
+  extend type Mutation {
+    addSupplement(
+      date: String!
+      userId: String!
+      time: String!
+      name: String!
+      amount: Float
+      unit: String
+    ): Supplement
+    removeSupplement(
+      _id: ID!
+    ): DeleteResponse
+  }
+`

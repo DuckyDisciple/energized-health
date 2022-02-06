@@ -1,21 +1,29 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { ContextProvider } from 'global'
+import { ThemeProvider } from 'styled-components'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import MainLayout from './MainLayout'
 import { useScrollToTop } from 'hooks'
-
+import { AppContext, AppProvider, AuthContext, AuthProvider } from 'context'
 
 const App = () => {
   useScrollToTop()
   return (
-    <ContextProvider>
-      <Switch>
-        <Route path="/" component={AppLayout} />
-        <Route component={NoMatch} />
-      </Switch>
-    </ContextProvider>
+    <AppProvider>
+      <AppContext.Consumer>
+        {({ state: appState }) => (
+          <AuthProvider>
+            <ThemeProvider theme={appState.currentTheme}>
+              <Switch>
+                <Route path="/" component={AppLayout} />
+                <Route component={NoMatch} />
+              </Switch>
+            </ThemeProvider>
+          </AuthProvider>
+        )}
+      </AppContext.Consumer>
+    </AppProvider>
   )
 }
 

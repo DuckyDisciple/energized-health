@@ -1,0 +1,21 @@
+module.exports = `
+  type DefaultSup {
+    _id: ID!
+    name: String!
+    unit: String!
+  }
+
+  extend type Query {
+    defaultSupplements: [DefaultSup]
+  }
+
+  extend type Mutation {
+    addDefaultSupplement(
+      name: String!
+      unit: String!
+    ): DefaultSup
+    removeDefaultSupplement(
+      _id: ID!
+    ): DeleteResponse
+  }
+`

@@ -1,13 +1,13 @@
 {
-  "name": "pure-func-homepage",
+  "name": "energized-health",
   "private": true,
-  "description": "A homepage for Pure Func LLC",
+  "description": "App for managing Energized Health",
   "version": "0.1.0",
-  "author": "Eric Sartorius <eric@purefunc.dev>",
+  "author": "Drew Sartorius <reachme@drewsartorius.com>",
   "main": "server.js",
   "scripts": {
     "start": "concurrently \"cd server && npm run server\" \"cd ui && npm run start\"",
-    "build": "cd ui && snowpack build --reload",
+    "build": "cd ui && vite build --reload",
     "buildAPI": "cd server && npm run build",
     "installUI": "cd ui && npm i",
     "installAPI": "cd api && npm i",
@@ -16,7 +16,6 @@
     "lint": "cd ui && prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "devDependencies": {
-    "snowpack": "^3.0.11",
-    "snowpack-plugin-relative-css-urls": "^1.1.1"
+    "vite": "^2.1.5"
   }
 }

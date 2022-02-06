@@ -1,47 +1,67 @@
 {
-  "include": ["ui/src", "./types"],
   "compilerOptions": {
-    "module": "esnext",
+    /* Basic Options */
     "target": "esnext",
-    "moduleResolution": "node",
-    "jsx": "preserve",
-    "baseUrl": "./",
-    /* paths - import rewriting/resolving */
-    "paths": {
-      // If you configured any Snowpack aliases, add them here.
-      // Add this line to get types for streaming imports (packageOptions.source="remote"):
-      //     "*": [".snowpack/types/*"]
-      // More info: https://www.snowpack.dev/guides/streaming-imports
-      "animation": ["./src/animation"],
-      "animation*": ["./src/animation*"],
-      "components": ["./src/components"],
-      "components*": ["./src/components*"],
-      "figures": ["./src/figures"],
-      "figures*": ["./src/figures*"],
-      "global": ["./src/global"],
-      "global*": ["./src/global*"],
-      "hooks": ["./src/hooks"],
-      "hooks*": ["./src/hooks*"],
-      "images":["./src/images"],
-      "images*":["./src/images*"],
-      "utilities": ["./src/utilities"],
-      "utilities*": ["./src/utilities*"]
-    },
-    /* noEmit - Snowpack builds (emits) files, not tsc. */
-    "noEmit": true,
-    /* Additional Options */
+    "module": "esnext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "checkJs": false,
+    "jsx": "react",
+    "sourceMap": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": false,
     "strictNullChecks": true,
     "noEmitOnError": false,
-    "strict": true,
-    "skipLibCheck": true,
+    "noEmit": true,
+
+    /* Additional Checks */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": false,
-    "forceConsistentCasingInFileNames": true,
+
+    /* Module Resolution Options */
+    "baseUrl": "./",
+    "paths": {
+      "animation": ["./src/animation"],
+      "animation*": ["./src/animation*"],
+      "components": ["./src/components"],
+      "components*": ["./src/components*"],
+      "context": ["./src/context"],
+      "context*": ["./src/context*"],
+      "global": ["./src/global"],
+      "global*": ["./src/global*"],
+      "layouts": ["./src/layouts"],
+      "layouts*": ["./src/layouts*"],
+      "styles": ["./src/styles"],
+      "styles*": ["./src/styles*"],
+      "hooks": ["./src/hooks"],
+      "hooks*": ["./src/hooks*"],
+      "pages": ["./src/pages"],
+      "pages*": ["./src/pages*"],
+      "utilities": ["./src/utilities"],
+      "utilities*": ["./src/utilities*"]
+    },
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "importsNotUsedAsValues": "error",
-    "noImplicitAny": false
-  }
+    "types": ["vite/client"],
+    "esModuleInterop": true,
+    "preserveSymlinks": true
+  },
+  "include": ["./src"],
+  "exclude": [
+    "src/**/*.test.*",
+    "src/**/__tests__/*",
+    "node_modules",
+    "packages",
+    ".github",
+    "coverage",
+    "cypress",
+    ".vscode"
+  ]
 }

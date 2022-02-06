@@ -1,16 +1,15 @@
 {
-  "name": "pure-func-homepage",
+  "name": "eh-backend",
   "private": true,
-  "description": "A homepage for Pure Func LLC",
+  "description": "API for EH Dashboard",
   "version": "0.1.0",
-  "author": "Eric Sartorius <eric@purefunc.dev>",
+  "author": "Drew Sartorius <reachme@drewsartorius.com>",
   "main": "server.js",
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon --use_strict server.js",
-    "client": "snowpack dev",
-    "build": "snowpack build",
-    "test": "web-test-runner \"src/**/*.test.tsx\"",
+    "client": "vite",
+    "build": "vite build",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
   },
@@ -23,7 +22,6 @@
     "apollo-link-http": "^1.5.16",
     "apollo-server-express": "^2.9.4",
     "apollo-upload-client": "^14.1.3",
-    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.2",
@@ -38,7 +36,7 @@
     "http-proxy": "^1.18.1",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mkdirp": "^0.5.1",
     "mongoose": "^5.7.1",
     "morgan": "^1.9.1",
@@ -51,26 +49,21 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "shortid": "^2.2.15",
+    "stripe": "^8.148.0",
     "validator": "^11.1.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@snowpack/plugin-dotenv": "^2.0.5",
-    "@snowpack/plugin-react-refresh": "^2.4.0",
-    "@snowpack/plugin-sass": "^1.2.0",
-    "@snowpack/plugin-typescript": "^1.2.0",
-    "@snowpack/web-test-runner-plugin": "^0.2.0",
     "@testing-library/react": "^11.0.0",
     "@types/chai": "^4.2.13",
     "@types/mocha": "^8.2.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@types/snowpack-env": "^2.3.2",
     "@web/test-runner": "^0.12.0",
     "chai": "^4.2.0",
     "nodemon": "^1.19.4",
     "prettier": "^2.0.5",
-    "snowpack": "^3.0.1",
-    "typescript": "^4.0.0"
+    "typescript": "^4.2.3",
+    "vite": "^2.1.5"
   }
 }

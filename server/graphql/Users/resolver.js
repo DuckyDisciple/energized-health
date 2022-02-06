@@ -1,27 +1,18 @@
 const userDAO = require("../../models/user")
-const teamDAO = require("../../models/team")
 const logger = require('../../config/logger')
 
+const RoleType = Object.freeze({
+  ADMIN: "ADMIN",
+  COACH: "COACH",
+  USER: "USER",
+})
+
 module.exports = {
+  RoleType,
   User: {
     _id({ _id }) {
       return _id
     },
-    username({ username }) {
-      return username
-    },
-    displayName({ displayName }) {
-      return displayName
-    },
-    email({ email }) {
-      return email
-    },
-    teams({ teams }) {
-      return teamDAO.find({ _id: {$in: teams} })
-    },
-    isAdmin({ isAdmin }) {
-      return isAdmin
-    }
   },
   Query: {
     users() {

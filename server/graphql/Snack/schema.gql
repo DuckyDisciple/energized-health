@@ -1,0 +1,27 @@
+module.exports = `
+  type Snack {
+    _id: ID!
+    date: String!
+    userId: ID!
+    time: String!
+    calories: Int!
+    notes: String
+  }
+
+  extend type Query {
+    userSnackForDay(userId: ID!, date: String!): Snack
+  }
+
+  extend type Mutation {
+    addSnack(
+      date: String!
+      userId: String!
+      time: String!
+      calories: Int!
+      notes: String
+    ): Snack
+    removeSnack(
+      _id: ID!
+    ): DeleteResponse
+  }
+`

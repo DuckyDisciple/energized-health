@@ -8,9 +8,12 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import { HelmetProvider } from 'react-helmet-async'
 import './styles/index.scss'
 
+const isProd = Boolean(window.location.host.indexOf('eh.drew-andrea.com') > -1)
+const apiUrl = isProd ? 'https://eh.drew-andrea.com/api/graphql' : 'http://localhost:8008/graphql'
+
 const uploadLink = createUploadLink({
   credentials: 'include',
-  uri: '/api/graphql',
+  uri: apiUrl,
 })
 
 const client = new ApolloClient({

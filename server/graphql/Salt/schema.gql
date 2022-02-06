@@ -1,0 +1,25 @@
+module.exports = `
+  type Salt {
+    _id: ID!
+    date: String!
+    userId: ID!
+    time: String!
+    amount: Float!
+  }
+
+  extend type Query {
+    userSaltForDay(userId: ID!, date: String!): [Salt]
+  }
+
+  extend type Mutation {
+    addSalt(
+      date: String!
+      userId: String!
+      time: String!
+      amount: Float!
+    ): Salt
+    removeSalt(
+      _id: ID!
+    ): DeleteResponse
+  }
+`

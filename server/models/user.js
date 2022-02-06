@@ -9,8 +9,18 @@ const userSchema = new mongoose.Schema({
   displayName: String,
   email: String,
   password: { type: String, required: true },
-  restaurants: [String],
-  isAdmin: Boolean
+  role: {
+    type: String,
+    enum: ["USER", "ADMIN", "COACH"],
+    default: "USER",
+    required: true
+  },
+  defaultWaterGoal: {
+    type: Number,
+    default: 160,
+    required: true
+  },
+  defaultSupplementJsons: [String],
 })
 
 userSchema.index({ username: 1 })

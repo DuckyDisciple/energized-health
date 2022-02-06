@@ -1,0 +1,25 @@
+module.exports = `
+  type Water {
+    _id: ID!
+    date: String!
+    userId: ID!
+    time: String!
+    amount: Float!
+  }
+
+  extend type Query {
+    userWatersForDay(userId: ID!, date: String!): [Water]
+  }
+
+  extend type Mutation {
+    addWater(
+      date: String!
+      userId: String!
+      time: String!
+      amount: Float!
+    ): Water
+    removeWater(
+      _id: ID!
+    ): DeleteResponse
+  }
+`

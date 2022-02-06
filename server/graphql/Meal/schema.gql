@@ -1,0 +1,27 @@
+module.exports = `
+  type Meal {
+    _id: ID!
+    date: String!
+    userId: ID!
+    time: String!
+    calories: Int!
+    notes: String
+  }
+
+  extend type Query {
+    userMealsForDay(userId: ID!, date: String!): [Meal]
+  }
+
+  extend type Mutation {
+    addMeal(
+      date: String!
+      userId: String!
+      time: String!
+      calories: Int!
+      notes: String
+    ): Meal
+    removeMeal(
+      _id: ID!
+    ): DeleteResponse
+  }
+`

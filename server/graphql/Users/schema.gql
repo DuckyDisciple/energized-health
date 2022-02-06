@@ -5,8 +5,15 @@ module.exports = `
     password: String!
     displayName: String
     email: String
-    teams: [Team]
-    isAdmin: Boolean
+    role: String!
+    defaultWaterGoal: Int
+    defaultSupplementJsons: [String]
+  }
+
+  enum RoleType {
+    ADMIN,
+    COACH,
+    USER
   }
 
   type Auth {
@@ -26,12 +33,13 @@ module.exports = `
       password: String!
       displayName: String
       email: String!
-      isAdmin: Boolean
     ): Auth
     updateUser(
       username: String
       displayName: String
       email: String
+      defaultWaterGoal: Int
+      defaultSupplementJsons: [String]
     ): User
     editUser(
       _id: ID!
@@ -39,8 +47,11 @@ module.exports = `
       password: String
       displayName: String
       email: String
-      isAdmin: Boolean): User
+      defaultWaterGoal: Int
+      defaultSupplementJsons: [String]
+    ): User
     login(username: String!, password: String): Auth
     changePassword(oldPass: String!, newPass: String!): Boolean
+    changeRole(userId: ID!, role: RoleType!): User
   }
 `

@@ -2,85 +2,65 @@ const { ApolloServer } = require("apollo-server-express")
 const { merge } = require("lodash")
 
 const commonResolver = require("./Common/resolvers")
-const tagResolver = require("./Tag/resolver")
-const noteResolver = require("./Note/resolver")
-const itemResolver = require("./Item/resolver")
-const categoryResolver = require("./Category/resolver")
-const menuResolver = require("./Menu/resolver")
-const restaurantResolver = require("./Restaurant/resolver")
 const userResolver = require("./Users/resolver")
-const availabilityResolver = require("./Availability/resolver")
-const discountResolver = require("./Discount/resolver")
-const teamResolver = require("./Team/resolver")
-const roleResolver = require("./Role/resolver")
-const membershipResolver = require("./Membership/resolver")
+const dayResolver = require("./Day/resolver")
+const mealResolver = require("./Meal/resolver")
+const saltResolver = require("./Salt/resolver")
+const snackResolver = require("./Snack/resolver")
+const defSupResolver = require("./DefaultSup/resolver")
+const supplementResolver = require("./Supplement/resolver")
+const waterResolver = require("./Water/resolver")
 
 const commonTypeDef = require("./Common/schema.gql")
-const tagTypeDef = require("./Tag/schema.gql")
-const noteTypeDef = require("./Note/schema.gql")
-const itemTypeDef = require("./Item/schema.gql")
-const categoryTypeDef = require("./Category/schema.gql")
-const menuTypeDef = require("./Menu/schema.gql")
-const restaurantTypeDef = require("./Restaurant/schema.gql")
 const userTypeDef = require("./Users/schema.gql")
-const availabilityTypeDef = require("./Availability/schema.gql")
-const discountTypeDef = require("./Discount/schema.gql")
-const teamTypeDef = require("./Team/schema.gql")
-const roleTypeDef = require("./Role/schema.gql")
-const membershipTypeDef = require("./Membership/schema.gql")
+const dayTypeDef = require("./Day/schema.gql")
+const mealTypeDef = require("./Meal/schema.gql")
+const saltTypeDef = require("./Salt/schema.gql")
+const snackTypeDef = require("./Snack/schema.gql")
+const defSupTypeDef = require("./DefaultSup/schema.gql")
+const supplementTypeDef = require("./Supplement/schema.gql")
+const waterTypeDef = require("./Water/schema.gql")
 
 const commonMutations = require("./Common/mutation")
-const tagMutations = require("./Tag/mutations")
-const noteMutations = require("./Note/mutations")
-const itemMutations = require("./Item/mutations")
-const categoryMutations = require("./Category/mutations")
-const menuMutations = require("./Menu/mutations")
-const restaurantMutations = require("./Restaurant/mutations")
 const userMutations = require("./Users/mutations")
-const availabilityMutations = require("./Availability/mutations")
-const discountMutations = require("./Discount/mutations")
-const teamMutations = require("./Team/mutations")
-const roleMutations = require("./Role/mutations")
-const membershipMutations = require("./Membership/mutations")
+const dayMutations = require("./Day/mutations")
+const mealMutations = require("./Meal/mutations")
+const saltMutations = require("./Salt/mutations")
+const snackMutations = require("./Snack/mutations")
+const defSupMutations = require("./DefaultSup/mutations")
+const supplementMutations = require("./Supplement/mutations")
+const waterMutations = require("./Water/mutations")
 
 const queries = merge(
   commonResolver,
-  tagResolver,
-  noteResolver,
-  itemResolver,
-  categoryResolver,
-  menuResolver,
-  restaurantResolver,
   userResolver,
-  availabilityResolver,
-  discountResolver,
-  teamResolver,
-  roleResolver,
-  membershipResolver
+  dayResolver,
+  mealResolver,
+  saltResolver,
+  snackResolver,
+  defSupResolver,
+  supplementResolver,
+  waterResolver
 )
 const mutations = merge(
   commonMutations,
-  tagMutations,
-  noteMutations,
-  itemMutations,
-  categoryMutations,
-  menuMutations,
-  restaurantMutations,
   userMutations,
-  availabilityMutations,
-  discountMutations,
-  teamMutations,
-  roleMutations,
-  membershipMutations
+  dayMutations,
+  mealMutations,
+  saltMutations,
+  snackMutations,
+  defSupMutations,
+  supplementMutations,
+  waterMutations
 )
 const resolvers = merge(queries, mutations)
 
 const context = request => {
   const userId = request.req.userId
   const username = request.req.username
-  const userIsAdmin = request.req.isAdmin
+  const role = request.req.role
 
-  return { request, userId, username, userIsAdmin }
+  return { request, userId, username, role }
 }
 
 const apolloServer = new ApolloServer({
@@ -88,18 +68,14 @@ const apolloServer = new ApolloServer({
   resolvers,
   typeDefs: [
     commonTypeDef,
-    tagTypeDef,
-    noteTypeDef,
-    itemTypeDef,
-    categoryTypeDef,
-    menuTypeDef,
-    restaurantTypeDef,
     userTypeDef,
-    availabilityTypeDef,
-    discountTypeDef,
-    teamTypeDef,
-    roleTypeDef,
-    membershipTypeDef
+    dayTypeDef,
+    mealTypeDef,
+    saltTypeDef,
+    snackTypeDef,
+    defSupTypeDef,
+    supplementTypeDef,
+    waterTypeDef
   ]
 })
 
